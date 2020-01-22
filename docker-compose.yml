@@ -14,9 +14,6 @@ services:
       - type: volume
         source: elasticsearch
         target: /usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
     environment:
       ES_JAVA_OPTS: "${ES_JAVA_OPTS_XMX} ${ES_JAVA_OPTS_XMS}"
       ELASTIC_PASSWORD: $ELASTIC_PASSWORD
@@ -41,8 +38,7 @@ services:
         target: /usr/share/logstash/pipeline
         read_only: true
     ports:
-      - "5000:5000"
-      - "9600:9600"
+      - "8080:8080"
     environment:
       LS_JAVA_OPTS: "${LS_JAVA_OPTS_XMX} ${LS_JAVA_OPTS_XMS}"
     networks:
